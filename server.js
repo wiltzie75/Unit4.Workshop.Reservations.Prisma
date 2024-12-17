@@ -46,7 +46,7 @@ app.post("/api/customers/:id/reservations", async (req, res, next) => {
         partyCount,
       },
     });
-    res.json(reservation);
+    res.status(201).json(reservation);
   } catch (err) {
     next();
   }
