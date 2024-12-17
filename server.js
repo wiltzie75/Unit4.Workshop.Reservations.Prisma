@@ -12,7 +12,7 @@ app.get("/api/customers", async (req, res, next) => {
     const customers = await prisma.customer.findMany();
     res.json(customers);
   } catch (err) {
-    next(err);
+    next();
   }
 });
 
@@ -21,7 +21,7 @@ app.get("/api/restaurants", async (req, res, next) => {
     const restaurants = await prisma.restaurant.findMany();
     res.json(restaurants);
   } catch (err) {
-    next(err);
+    next();
   }
 });
 
@@ -30,7 +30,7 @@ app.get("/api/reservations", async (req, res, next) => {
     const reservations = await prisma.reservation.findMany();
     res.json(reservations);
   } catch (err) {
-    next(err);
+    next();
   }
 });
 
@@ -48,7 +48,7 @@ app.post("/api/customers/:id/reservations", async (req, res, next) => {
     });
     res.json(reservation);
   } catch (err) {
-    next(err);
+    next();
   }
 });
 
@@ -71,7 +71,7 @@ app.delete(
       await prisma.reservation.delete({ where: { id } });
       res.sendStatus(204);
     } catch (err) {
-      next(err);
+      next();
     }
   }
 );
