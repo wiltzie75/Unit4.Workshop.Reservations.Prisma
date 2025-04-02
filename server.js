@@ -57,18 +57,19 @@ app.delete(
   async (req, res, next) => {
     try {
       const id = +req.params.id;
+      const customerId = +req.params.customerId;
 
       const reservationExists = await prisma.reservation.findFirst({
-        where: { id },
+        where: { id, customerId },
       });
 
       if (!reservationExists) {
         return next({
           status: 404,
-          message: `Could not find reservation with id ${id}.`,
+          message: `Could not find reservation with id ${id} for customer ${customerId}.`,
         });
       }
-      await prisma.reservation.delete({ where: { id } });
+      await prisma.reservation.delete({ where: { id, customerId } });
       res.sendStatus(204);
     } catch (err) {
       next();
