@@ -41,7 +41,3 @@ seed()
     process.exit(1);
   });
 
-
-//   curl -X POST http://localhost:3000/api/customers/1/reservations \
-//   -H "Content-Type: application/json" \
-//   -d '{"restaurantId": 3, "date": "2025-07-04T19:00:00.000Z", "partyCount": 2}'
